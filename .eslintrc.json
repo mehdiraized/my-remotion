@@ -1,10 +1,3 @@
 {
-  "extends": "next",
-  "plugins": ["@remotion"],
-  "overrides": [
-    {
-      "files": ["remotion/**/*.{ts,tsx}"],
-      "extends": ["plugin:@remotion/recommended"]
-    }
-  ]
+  "extends": "next/core-web-vitals"
 }
