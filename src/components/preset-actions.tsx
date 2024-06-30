@@ -47,7 +47,7 @@ export function PresetActions() {
 				</DropdownMenuTrigger>
 				<DropdownMenuContent align="end">
 					<DropdownMenuItem onSelect={() => setIsOpen(true)}>
-						Content filter preferences
+						Details Project
 					</DropdownMenuItem>
 					<DropdownMenuSeparator />
 					<DropdownMenuItem

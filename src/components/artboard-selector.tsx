@@ -35,17 +35,18 @@ import { Artboard, ArtboardType } from "../data/artboards";
 interface ArtboardSelectorProps extends PopoverProps {
 	types: readonly ArtboardType[];
 	artboards: Artboard[];
+	value: Artboard;
+	setValue: (value: Artboard) => void;
 }
 
 export function ArtboardSelector({
 	artboards,
 	types,
+	value,
+	setValue,
 	...props
 }: ArtboardSelectorProps) {
 	const [open, setOpen] = React.useState(false);
-	const [selectedArtboard, setSelectedArtboard] = React.useState<Artboard>(
-		artboards[0]
-	);
 	const [peekedArtboard, setPeekedArtboard] = React.useState<Artboard>(
 		artboards[0]
 	);
@@ -61,7 +62,7 @@ export function ArtboardSelector({
 					className="flex-1 justify-between md:max-w-[150px] lg:max-w-[150px]"
 				>
 					<DimensionsIcon className="mr-2 h-4 w-4 shrink-0 opacity-50" />
-					{selectedArtboard ? selectedArtboard.name : "Select a artboard..."}
+					{value ? value.name : "Select a artboard..."}
 					<CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
 				</Button>
 			</PopoverTrigger>
@@ -107,10 +108,10 @@ export function ArtboardSelector({
 											<ArtboardItem
 												key={artboard.id}
 												artboard={artboard}
-												isSelected={selectedArtboard?.id === artboard.id}
+												isSelected={value?.id === artboard.id}
 												onPeek={(artboard) => setPeekedArtboard(artboard)}
 												onSelect={() => {
-													setSelectedArtboard(artboard);
+													setValue(artboard);
 													setOpen(false);
 												}}
 											/>
